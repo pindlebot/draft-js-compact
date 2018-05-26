@@ -58,11 +58,11 @@ export const compress = (raw, opts = {}) => {
   }
 
   const blocks = rawContentState.blocks.map(compressRawBlock({ discardKeys }))
-  if (!Object.keys(raw.entityMap || {}).length) {
+  if (!Object.keys(rawContentState.entityMap || {}).length) {
     return { blocks }
   }
   return {
     blocks,
-    entityMap: raw.entityMap
+    entityMap: rawContentState.entityMap
   }
 }
