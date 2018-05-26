@@ -33,7 +33,7 @@ export const compressRawBlock = opts => block => {
   if (inlineStyleRanges?.length) {
     compact.inlineStyleRanges = inlineStyleRanges
   }
-  if (!opts.pruneKeys && key) {
+  if (!opts.discardKeys && key) {
     compact.key = key
   }
   if (text) {
@@ -47,7 +47,7 @@ export const compressRawBlock = opts => block => {
 
 export const compress = (raw, opts = {}) => {
   let rawContentState = raw
-  const { convertToRaw, pruneKeys } = { ...defaultCompressOpts, ...opts }
+  const { convertToRaw, discardKeys } = { ...defaultCompressOpts, ...opts }
 
   if (instanceOfContentState(raw)) {
     console.warn('Provided contentState instead of raw contentState.')
@@ -57,7 +57,7 @@ export const compress = (raw, opts = {}) => {
     rawContentState = convertToRaw(raw.getCurrentContent())
   }
 
-  const blocks = rawContentState.blocks.map(compressRawBlock({ pruneKeys }))
+  const blocks = rawContentState.blocks.map(compressRawBlock({ discardKeys }))
   if (!Object.keys(raw.entityMap || {}).length) {
     return { blocks }
   }

@@ -29,7 +29,7 @@ export const defaultExpandOpts = {
 }
 
 export const defaultCompressOpts = {
-  pruneKeys: false,
+  discardKeys: false,
   convertToRaw: convertFromDraftStateToRaw
 }
   

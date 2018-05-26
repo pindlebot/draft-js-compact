@@ -35,7 +35,7 @@ describe('compress', function() {
       }]
     }
     assert.deepEqual(
-      compress(raw, { pruneKeys: true }),
+      compress(raw, { discardKeys: true }),
       { blocks: [{ text: 'A' }] }
     )
   })
@@ -95,3 +95,18 @@ describe('expand', function() {
     })
   })
 })
+
+
+const raw = {
+  blocks: [
+    'Colorless',
+    'green',
+    'ideas',
+    'sleep',
+    'furiously'
+  ]
+}
+
+console.log(
+ expand(raw)
+)
