@@ -1,6 +1,7 @@
 const { assert } = require('chai')
 const { ContentState } = require('draft-js')
 const { compress, expand } = require('../lib')
+const RAW = require('./raw.json')
 
 describe('compress', function() {
   it('should compress raw draft-js content state', function() {
@@ -96,17 +97,18 @@ describe('expand', function() {
   })
 })
 
+describe('expand and compress', () => {
+  it('should resolve in a complicated example', () => {
+    let compressed = compress(RAW)
+    let expanded = expand(compressed)
+    assert.deepEqual(RAW, expanded)
+  })
+})
 
-const raw = {
-  blocks: [
-    'Colorless',
-    'green',
-    'ideas',
-    'sleep',
-    'furiously'
-  ]
-}
 
-console.log(
- expand(raw)
-)
+describe('expand and compress', () => {
+  it('should resolve in a complicated example', () => {
+    let expanded = expand(RAW)
+    assert.deepEqual(RAW, expanded)
+  })
+})

@@ -1,0 +1,727 @@
+{
+  "blocks": [{
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Minimum Viable GraphQL QuickStart",
+    "key": "bibe2",
+    "depth": 0,
+    "type": "header-two"
+  }, {
+    "entityRanges": [{
+      "offset": 77,
+      "length": 10,
+      "key": 0
+    }],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "We'll use React, GraphQL and Apollo to make a simple counter. We'll also use Graph.Cool.",
+    "key": "3hjvc",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Why These Technologies?",
+    "key": "286st",
+    "depth": 0,
+    "type": "header-two"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 7,
+      "style": "BOLD"
+    }],
+    "data": {},
+    "text": "GraphQL. GraphQL enables you to fetch exactly the data that you need from your database, no more or less. GraphQL let's you bundle nested requests into a single request. Instead of requesting users/{userId} and then posts/{postId} you request { users: { posts } } at once.",
+    "key": "d6s9q",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 6,
+      "style": "BOLD"
+    }],
+    "data": {},
+    "text": "Apollo. Apollo is the easiest way to get started with GraphQL. The alternative to Apollo is Relay. In this example, we'll be using apollo-react to build a simple React component that fetches and pushes data to our GraphQL database.",
+    "key": "6a5to",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [{
+      "offset": 162,
+      "length": 25,
+      "key": 1
+    }],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 9,
+      "style": "BOLD"
+    }],
+    "data": {},
+    "text": "GraphCool. GraphCool is analogous to Firebase. If you want to host your own GraphQL server that's fine - but GraphCool is great for prototyping. Unlike Firebase, there's no vendor lock-in with GraphCool. You can swap in an in-house solution later.",
+    "key": "7s7qq",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "The Overall Strategy",
+    "key": "7mlcr",
+    "depth": 0,
+    "type": "header-two"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 45,
+      "length": 49,
+      "style": "CODE"
+    }],
+    "data": {},
+    "text": "If you're familiar with Redux and its syntax connect(mapStateToProps, mapDispatchToProps)(App), client-side graphQL won't be difficult for you to learn.",
+    "key": "dsj2v",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Apollo has its own internal redux store. Apollo makes requests to your GraphQL server and intelligently updates it's internal store. Wrapping your React components with Apollo gives you access to Apollo's internal store.",
+    "key": "dpt7v",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "GraphQL / Apollo Quick Start With Sample Project",
+    "key": "2vgmc",
+    "depth": 0,
+    "type": "header-two"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "This graphql-react-apollo is a minimum viable example of how you'd use Apollo and GraphQL, client-side. In this example we make a counter that keeps track of button clicks.",
+    "key": "eeern",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Clone this sample project and and install dependencies:",
+    "key": "fkdu0",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 100,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "bash"
+    },
+    "text": "git clone https://github.com/focuswish/graphql-react-apollo.git \ncd graphql-react-apollo\nnpm install",
+    "key": "cq416",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [{
+      "offset": 0,
+      "length": 1,
+      "key": 2
+    }],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": " ",
+    "key": "cs12s",
+    "depth": 0,
+    "type": "atomic"
+  }, {
+    "entityRanges": [{
+      "offset": 9,
+      "length": 9,
+      "key": 3
+    }],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Create a GraphCool:",
+    "key": "alph6",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 47,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "bash"
+    },
+    "text": "npm install -g graphcool\ngraphcool auth # login",
+    "key": "8jeg",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "A new GraphCool project comes with User and File schema by default. We're going to initialize a new GraphCool project that adds a Counter schema:",
+    "key": "cdhq6",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "From graphql-react-apollo issue the following;",
+    "key": "4pv8j",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 102,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "bash"
+    },
+    "text": "graphcool init https://raw.githubusercontent.com/focuswish/graphql-react-apollo/master/example.graphql",
+    "key": "die38",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 64,
+      "length": 7,
+      "style": "CODE"
+    }],
+    "data": {},
+    "text": "The URI after 'graphcool init' points to schema for a new type, Counter:",
+    "key": "ft749",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 30,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "graphql"
+    },
+    "text": "type Counter {\n  count: Int!\n}",
+    "key": "tgjk",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "If initializing the new GraphCool project is successful, you should see a Simple and Relay API URI printed in the console that looks something like:",
+    "key": "ffhkr",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 144,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "bash"
+    },
+    "text": "Simple API:   https://api.graph.cool/simple/v1/cj5d82p4jmjg90127sqeiu4kg\nRelay API:    https://api.graph.cool/relay/v1/cj5d82p4jmjg90127sqeiu4kg",
+    "key": "cmjv",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "You can also access your simple and relay API URIs from the GraphCool Console.",
+    "key": "bk8us",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 17,
+      "length": 14,
+      "style": "BOLD"
+    }, {
+      "offset": 37,
+      "length": 12,
+      "style": "CODE"
+    }],
+    "data": {},
+    "text": "Copy + paste the Simple API URI into src/index.js as follows:",
+    "key": "8a131",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 122,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "js"
+    },
+    "text": "const networkInterface = createNetworkInterface({\n  uri: 'https://api.graph.cool/simple/v1/cj5d82p4jmjg90127sqeiu4kg',\n});",
+    "key": "29mpl",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Start the server:",
+    "key": "7s767",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 11,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "bash"
+    },
+    "text": "npm run dev",
+    "key": "ajd81",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Apollo / GraphQL Quick Start From Scratch",
+    "key": "eg20e",
+    "depth": 0,
+    "type": "header-two"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Let's start with a new project from scratch.",
+    "key": "684eu",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "First we'll setup Apollo client.",
+    "key": "aea8o",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 67,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "bash"
+    },
+    "text": "mkdir my-app && cd my-app\nnpm i react-apollo react react-dom --save",
+    "key": "e82p1",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 524,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "js"
+    },
+    "text": "// App.js\nimport React from 'react';\nimport ReactDOM from 'react-dom';\nimport {createNetworkInterface, ApolloClient, ApolloProvider} from 'react-apollo';\nconst networkInterface = createNetworkInterface({\n  uri: 'https://api.graph.cool/simple/v1/cj5d82p4jmjg90127sqeiu4kg',\n});\nconst client = new ApolloClient({networkInterface})\n\n// Wrap our root component (<App />) in <ApolloProvider></ApolloProvider>\nReactDOM.render(\n  <ApolloProvider client={client}>\n    <App />\n  </ApolloProvider>,\n  document.getElementById('root')\n)",
+    "key": "9nngm",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Let's create a simple root component. We initialized the GraphCool project with sample schema for a counter. This sample schema only had one field, \"count\":",
+    "key": "6vfe0",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 30,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "graphql"
+    },
+    "text": "type Counter {\n  count: Int!\n}",
+    "key": "2o5pd",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Int is one of the primitative types. The exclaimation mark means that this field is non-nullable.",
+    "key": "9a8f5",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "When you initialized this new GraphCool project, you provided a URL to the above schema. GraphCool automatically added some fields (ID, createdAt, and UpdatedAt).",
+    "key": "djbie",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 112,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "graphql"
+    },
+    "text": "type Counter implements Node {\n  count: Int!\n  createdAt: DateTime!\n  id: ID! @isUnique\n  updatedAt: DateTime!\n}",
+    "key": "b4us4",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Since we haven't populated our container with data yet, we'll make a button that creates a new counter.",
+    "key": "2ec9",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 135,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "js"
+    },
+    "text": "const App = ({createCounter}) => (\n  <div>\n    <button onClick={() => ( createCounter({count: 0}) )}>Create counter</button>\n  </div>\n)",
+    "key": "6c9mp",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 35,
+      "length": 15,
+      "style": "CODE"
+    }, {
+      "offset": 63,
+      "length": 8,
+      "style": "CODE"
+    }],
+    "data": {},
+    "text": "Just like with redux, we'll pass a createCounter() prop to our <App /> component. When the onClick() event handler fires, a new node will be created in our GrahCool backend (a node belonging to the Counter type).",
+    "key": "34e9n",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "The syntax looks like this:",
+    "key": "7qroa",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 347,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "js"
+    },
+    "text": "import {graphql} from 'react-apollo';\n\nconst createCounter = gql`\n  mutation createCounter(\n    $count: Int!\n  ) {\n    createCounter(\n      count: $count\n    ) {\n      count\n      id\n    }\n  }\n`\n\nconst AppWithData = graphql(createCounter, {\n  props: ({ mutate }) => ({\n    createCounter: ({count}) => mutate({variables: { count } }),\n  }),\n})(App)",
+    "key": "f9bqk",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 238,
+      "length": 11,
+      "style": "CODE"
+    }, {
+      "offset": 253,
+      "length": 30,
+      "style": "CODE"
+    }],
+    "data": {},
+    "text": "Note that we've named our mutation 'createCounter.' This can be a useful heuristic, but naming mutations and queries isn't necessary. The state of affairs is analogous to javascript where you can write anonymous or named functions, e.g., () => {...} or function namedFunction() {...}.",
+    "key": "4ede3",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Mutation Syntax",
+    "key": "4q484",
+    "depth": 0,
+    "type": "header-two"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 2,
+      "length": 8,
+      "style": "BOLD"
+    }],
+    "data": {},
+    "text": "A mutation is anything that mutates a node, like creating, updating, or deleting nodes. We use queries to read data.",
+    "key": "7qchj",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Mutation syntax looks like:",
+    "key": "dgppu",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 378,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "graphql"
+    },
+    "text": "# name our mutation\nmutation createCounter(\n    # The count should be an integer (int)\n    # The exclaimation-mark (!) means that $count is a required field\n    $count: Int!\n  ) {\n    createCounter(\n      # Pass $count as a variable\n      count: $count\n  ) {\n    # The values we want this mutation to return\n    # We could also return createdAt, updatedAt\n    count\n    id\n  }\n}",
+    "key": "8tj72",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "We could also add a default value to the count field with:",
+    "key": "abss2",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 45,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "graphql"
+    },
+    "text": "mutation createCounter($count: Int = 0) {...}",
+    "key": "629ht",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "This syntax is similar to ES6 parameter defaults, e.g., createCounter(count = 0)",
+    "key": "1cq52",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Interfacing With React Components",
+    "key": "3e95c",
+    "depth": 0,
+    "type": "header-two"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 24,
+      "length": 12,
+      "style": "CODE"
+    }],
+    "data": {},
+    "text": "Once again, we're using react-apollo to interface with GraphQL on the client-side.",
+    "key": "e9tc3",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 0,
+      "length": 903,
+      "style": "CODE"
+    }],
+    "data": {
+      "language": "js"
+    },
+    "text": "import React from 'react';\nimport ReactDOM from 'react-dom';\nimport {createNetworkInterface, ApolloClient, ApolloProvider, graphql} from 'react-apollo';\n\nconst App = ({createCounter}) => (\n  <div>\n    <button onClick={() => ( createCounter({count: 0}) )}>Create counter</button>\n  </div>\n)\n\nconst createCounter = gql`\n  mutation createCounter(\n    $count: Int!\n  ) {\n    createCounter(\n      count: $count\n    ) {\n      count\n      id\n    }\n  }\n`\n\nconst AppWithData = graphql(createCounter, {\n  props: ({ mutate }) => ({\n    createCounter: ({count}) => mutate({variables: { count }})\n  })\n})(App)\n\nconst networkInterface = createNetworkInterface({\n  uri: 'https://api.graph.cool/simple/v1/cj5d82p4jmjg90127sqeiu4kg',\n});\n\nconst client = new ApolloClient({networkInterface})\n\nReactDOM.render(\n  <ApolloProvider client={client}>\n    <AppWithData />\n  </ApolloProvider>,\n  document.getElementById('root')\n)",
+    "key": "2dotg",
+    "depth": 0,
+    "type": "code-block"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "GraphQL Queries",
+    "key": "5m9rm",
+    "depth": 0,
+    "type": "header-two"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "GraphQL really shines with queries. That's because GraphQL empowers us to ask for only the data that we need. Nested queries are a breeze so we don't need to make multiple roundtrips to the server to gain access to a deeply nested edge.",
+    "key": "bk9lf",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [{
+      "offset": 0,
+      "length": 1,
+      "key": 4
+    }],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": " ",
+    "key": "1kkr1",
+    "depth": 0,
+    "type": "atomic"
+  }, {
+    "entityRanges": [{
+      "offset": 0,
+      "length": 1,
+      "key": 5
+    }],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": " ",
+    "key": "bbedu",
+    "depth": 0,
+    "type": "atomic"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 63,
+      "length": 10,
+      "style": "ITALIC"
+    }],
+    "data": {},
+    "text": "With GraphCool, you can query all nodes of a certain type with all{Nodes}. For example, if you want to query all of the records of type User, we invoke allUsers.",
+    "key": "47goh",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "To query a specific node, you pass an ID as a variable.",
+    "key": "7vhes",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [],
+    "data": {},
+    "text": "Some GraphQl nomenclature:",
+    "key": "410ut",
+    "depth": 0,
+    "type": "unstyled"
+  }, {
+    "entityRanges": [],
+    "inlineStyleRanges": [{
+      "offset": 2,
+      "length": 4,
+      "style": "BOLD"
+    }, {
+      "offset": 202,
+      "length": 4,
+      "style": "BOLD"
+    }],
+    "data": {},
+    "text": "a node must return either a Scalar, Enum, Object, Interface, Union or a Non-Null wrapper around one of these types. Nodes cannot return a list. an edge connects two nodes together. Edges must contain a node field, and a cursor field (for pagination). This cursor field returns a type that serializes as a String; this may be a String, a non-null wrapper around a String, a custom scalar that serializes as a String, or a non-null wrapper around a custom scalar that serializes as a String.",
+    "key": "233oa",
+    "depth": 0,
+    "type": "unordered-list-item"
+  }],
+  "entityMap": {
+    "0": {
+      "type": "LINK",
+      "mutability": "MUTABLE",
+      "data": {
+        "href": "https://www.graph.cool/) as our hosted GraphQL backend. GraphCool is a GraphQL backend as a service, analogous to [Firebase](https://firebase.google.com/"
+      }
+    },
+    "1": {
+      "type": "LINK",
+      "mutability": "MUTABLE",
+      "data": {
+        "href": "http://www.automationfuel.com/graphcool-vs-firebase/"
+      }
+    },
+    "2": {
+      "type": "image",
+      "mutability": "IMMUTABLE",
+      "data": {
+        "src": "https://s3.amazonaws.com/contentkit-dev-deploymentbucket-3hlcbqx9f9nl/static/cjeqgfe8znnly01991jo5xkxx/graphcool-schema.png"
+      }
+    },
+    "3": {
+      "type": "LINK",
+      "mutability": "MUTABLE",
+      "data": {
+        "href": "https://www.graph.cool/) account (if you don't already have one). And be sure to install the [GraphCool commandline interface](https://www.npmjs.com/package/graphcool"
+      }
+    },
+    "4": {
+      "type": "image",
+      "mutability": "IMMUTABLE",
+      "data": {
+        "src": "https://s3.amazonaws.com/contentkit-dev-deploymentbucket-3hlcbqx9f9nl/static/cjeqgfe8znnly01991jo5xkxx/anatomy-of-graphql-query-1.png"
+      }
+    },
+    "5": {
+      "type": "image",
+      "mutability": "IMMUTABLE",
+      "data": {
+        "src": "https://s3.amazonaws.com/contentkit-dev-deploymentbucket-3hlcbqx9f9nl/static/cjeqgfe8znnly01991jo5xkxx/anatomy-of-graphql-query-2.png"
+      }
+    }
+  }
+}

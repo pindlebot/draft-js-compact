@@ -20,6 +20,8 @@ export const expand = (
       acc.push(createBlock({ text: block }))
     } else if (isCompact(block)) {
       acc.push(createBlock(block))
+    } else {
+      acc.push(block)
     }
     return acc
   }, [])
