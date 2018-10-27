@@ -1,5 +1,2 @@
-src
-node_modules
-.babelrc
-.gitignore
-.DS_Store
+*
+!lib/**
