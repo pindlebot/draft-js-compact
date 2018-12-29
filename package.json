@@ -12,21 +12,25 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
     "chai": "^4.2.0",
     "draft-js": "^0.10.5",
     "fbjs": "^1.0.0",
-    "immutable": "^3.7.4",
+    "immutable": "^4.0.0-rc.12",
     "mocha": "^5.2.0",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   },
   "dependencies": {
     "is-plain-object": "^2.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unshift/draft-js-compact.git"
   }
 }
