@@ -15,15 +15,31 @@ export const isNullish = val => typeof val === 'undefined' || val === null
 export const isCompact = maybeObject =>
   isPlainObject(maybeObject) && Object.keys(maybeObject).length < 7
 
+export const experimentalTreeDataSupport = (window.__DRAFT_GKX || {}).draft_tree_data_support
+
+const defaultBlockProperties = {
+  data: {},
+  depth: 0,
+  entityRanges: [],
+  inlineStyleRanges: [],
+  text: '',
+  type: 'unstyled'
+}
+
+const blockProperties = experimentalTreeDataSupport
+  ? {
+    ...defaultBlockProperties,
+    parent: null,
+    children: [],
+    prevSibling: null,
+    nextSibling: null
+  }
+  : defaultBlockProperties
+
 export const defaultExpandOpts = {
   createBlock: (block) => ({
-    data: {},
-    depth: 0,
-    entityRanges: [],
-    inlineStyleRanges: [],
     key: genKey(),
-    text: '',
-    type: 'unstyled',
+    ...blockProperties,
     ...block  
   })
 }

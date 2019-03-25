@@ -2,7 +2,8 @@ import {
   instanceOfContentState,
   instanceOfEditorState,
   instanceOfContentBlock,
-  defaultCompressOpts
+  defaultCompressOpts,
+  experimentalTreeDataSupport
 } from './util'
 import invariant from 'fbjs/lib/invariant'
 
@@ -41,6 +42,12 @@ export const compressRawBlock = opts => block => {
   }
   if (type !== 'unstyled') {
     compact.type = type
+  }
+  if (experimentalTreeDataSupport) {
+    compact.parent = block.parent || null
+    compact.nextSibling = block.nextSibling || null
+    compact.prevSibling = block.prevSibling || null
+    compact.children = block.children || []
   }
   return compact
 }
