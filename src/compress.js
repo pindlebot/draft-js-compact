@@ -44,10 +44,7 @@ export const compressRawBlock = opts => block => {
     compact.type = type
   }
   if (experimentalTreeDataSupport) {
-    compact.parent = block.parent || null
-    compact.nextSibling = block.nextSibling || null
-    compact.prevSibling = block.prevSibling || null
-    compact.children = block.children || []
+    compact.children = (block.children || []).map(compressRawBlock(opts))
   }
   return compact
 }

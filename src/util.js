@@ -29,10 +29,7 @@ const defaultBlockProperties = {
 const blockProperties = experimentalTreeDataSupport
   ? {
     ...defaultBlockProperties,
-    parent: null,
-    children: [],
-    prevSibling: null,
-    nextSibling: null
+    children: []
   }
   : defaultBlockProperties
 
